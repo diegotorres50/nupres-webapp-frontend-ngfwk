@@ -5,24 +5,33 @@ import { Router } from '@angular/router';
 // Este es el componente shell o padre de cada componente a desarrollar
 import { AppComponent } from './app.component';
 
-// Formulario html de inicio de sesion
-import { LoginComponent } from './login/login.component';
-
 // Donde definimos las rutas de la aplicacion, es un modulo hijo
 import { AppRoutingModule } from './app-routing.module';
+
+// Layouts
+import { PublicLayoutComponent } from './layout/public/public-layout.component';
+import { SecureLayoutComponent } from './layout/secure/secure-layout.component';
+
+// Public Components
+import { LoginComponent } from './core/public/login/login.component';
+import { AddPatientComponent } from './core/secure/patients/add-patient.component';
+
+// Shared Services
+import { GuardService } from './../shared/services/auth/guard.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AddPatientComponent,
+    PublicLayoutComponent,
+    SecureLayoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [
-
-  ],
+  providers: [GuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
